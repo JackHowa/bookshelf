@@ -1,8 +1,8 @@
+import '@reach/dialog/styles.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Logo } from './components/logo'
 import { Dialog } from '@reach/dialog'
-import '@reach/dialog/styles.css'
 
 function App() {
   const [openModalStatus, setModalStatus] = React.useState('none')
@@ -26,7 +26,7 @@ function App() {
         </button>
       </div>
       <Dialog
-        aria-label={'register'}
+        aria-label={'Register form'}
         isOpen={openModalStatus === 'register'}
         onDismiss={closeModal}
       >
@@ -36,7 +36,7 @@ function App() {
         <p>Register</p>
       </Dialog>
       <Dialog
-        aria-label={'login'}
+        aria-label={'Login form'}
         isOpen={openModalStatus === 'login'}
         onDismiss={closeModal}
       >
