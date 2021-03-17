@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom'
 import { Logo } from './components/logo'
 
@@ -8,12 +8,16 @@ function App() {
     alert(message)
   }
   return (
-    <>
-      <Logo />
+    <div>
+      <Logo width="80" height="80" />
       <h1>Bookshelf</h1>
-      <button onClick={() => onButtonClick('login')} type="button">Login</button>
-      <button onClick={() => onButtonClick('register')} type="button">Register</button>
-    </>
+      <div>
+        <button onClick={() => onButtonClick('login')} type="button">Login</button>
+      </div>
+      <div>
+        <button onClick={() => onButtonClick('register')} type="button">Register</button>
+      </div>
+    </div>
   )
 }
 
