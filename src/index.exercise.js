@@ -7,15 +7,12 @@ import { Dialog } from "@reach/dialog";
 import '@reach/dialog/styles.css';
 
 function App() {
-  const [isLoginOpen, setIsLoginOpen] = React.useState(false)
-  const [isRegistrationOpen, setIsRegistrationOpen] = React.useState(false)
+  const [openModalStatus, setModalStatus] = React.useState('none')
 
-  function toggleIsLoginOpen() {
-    setIsLoginOpen(prevState => !prevState)
-  }
 
-  function toggleIsRegistrationOpen() {
-    setIsRegistrationOpen(prevState => !prevState)
+
+  function closeModal() {
+    setModalStatus('none')
   }
 
   return (
@@ -23,15 +20,35 @@ function App() {
       <Logo width="80" height="80" />
       <h1>Bookshelf</h1>
       <div>
-        <button onClick={toggleIsLoginOpen} type="button">Login</button>
+        <button
+          onClick={() => setModalStatus('login')}
+          type="button"
+        >Login</button>
       </div>
       <div>
-        <button onClick={toggleIsRegistrationOpen} type="button">Register</button>
+        <button
+          onClick={() => setModalStatus('register')}
+          type="button"
+        >Register</button>
       </div>
-      <Dialog aria-label={"register"} isOpen={isRegistrationOpen} onDismiss={toggleIsLoginOpen}>
+      <Dialog
+        aria-label={"register"}
+        isOpen={openModalStatus === 'register'}
+        onDismiss={closeModal}
+      >
+        <div>
+          <button onClick={closeModal}>Close</button>
+        </div>
         <p>Register</p>
       </Dialog>
-      <Dialog aria-label={"login"} isOpen={isLoginOpen} onDismiss={toggleIsRegistrationOpen}>
+      <Dialog
+        aria-label={"login"}
+        isOpen={openModalStatus === 'login'}
+        onDismiss={closeModal}
+      >
+        <div>
+          <button onClick={closeModal}>Close</button>
+        </div>
         <p>Login</p>
       </Dialog>
     </div>
